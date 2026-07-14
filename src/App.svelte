@@ -11,26 +11,37 @@
     
     console.log(times); // Посмотрим, что пришло
 
-
-    
+    // test.js
+    const x = 5 ; // лишние пробелы
+    console.log(x);
     
     if (!canvasRef) return; // защита от null
+
+    canvasRef.width = window.innerWidth;
+    canvasRef.height = window.innerHeight;
     
-    const ctx = canvasRef.getContext("2d");
+    const ctx = canvasRef.getContext('2d');
     
     // Create gradient
     const grd = ctx.createLinearGradient(0, 0, 200, 0);
-    grd.addColorStop(0, "red");
-    grd.addColorStop(1, "white");
+    grd.addColorStop(0, 'red');
+    grd.addColorStop(1, 'white');
     
     // Fill with gradient
     ctx.fillStyle = grd;
-    ctx.fillRect(10, 10, 150, 80);
+    ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
   });
 </script>
 
-<div>
-  This is start of project
-</div>
+<canvas class="canvas" bind:this={canvasRef}></canvas>
 
-  <canvas bind:this={canvasRef}></canvas>
+<style>
+  /* .canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: block;
+  } */
+</style>
