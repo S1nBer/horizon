@@ -42,11 +42,27 @@ export default [
       // Предупреждения вместо ошибок для мелочей
       'no-unused-vars': ['warn', { 'varsIgnorePattern': '^\\$\\$|^_', 'argsIgnorePattern': '^_' }],
       'no-console': 'warn',
+      'space-before-blocks': ['error', 'always'],
+      'keyword-spacing': ['error', { 'before': true, 'after': true }],
+      'block-spacing': ['error', 'always'],
+      'brace-style': ['error', '1tbs', { 'allowSingleLine': false }], // Запрещаем одно-строчные блоки
     },
   },
   // Правила для JS/TS файлов
   {
     files: ['**/*.js', '**/*.ts'],
+    languageOptions: {
+      parser: tsParser, // <-- используем TS парсер
+      parserOptions: {
+        ecmaVersion: 2022,
+        sourceType: 'module',
+        project: './tsconfig.json', // если нужен strict type checking
+      },
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+      },
+    },
     rules: {
       'indent': ['error', 2],
       'quotes': ['error', 'single'],
