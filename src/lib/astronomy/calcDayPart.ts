@@ -17,5 +17,5 @@ export const calcDayPart = () => {
 
   return {
     currentStatus,
-  }
+  };
 };

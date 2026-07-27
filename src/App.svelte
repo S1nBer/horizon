@@ -1,53 +1,32 @@
 <script lang="ts">
-  import * as SunCalc from 'suncalc';
-    import { onMount } from 'svelte';
-  import { calcDayPart } from './calcDayPart';
-  import { DayPartStatus } from './calcDayPart.types';
+  import { onMount } from 'svelte';
+  import { HorizonScene } from './canvas/HorizonScene';
 
   let canvasRef: HTMLCanvasElement | null = $state(null);
 
-  onMount(() => {
-    // Всё, что связано с DOM — переносим сюда
-    const now = new Date();
-    const times = SunCalc.getTimes(now, 54.58, 82.55);
-    
-    if (!canvasRef) {
-      return; 
-    };
+  let horizonInstance: HorizonScene | null = $state(null);
 
+  onMount(() => {
     canvasRef.width = window.innerWidth;
     canvasRef.height = window.innerHeight;
-    
     const ctx = canvasRef.getContext('2d');
 
     if (!ctx) {
+      // eslint-disable-next-line no-console
+      console.error('Oops, cannot find canvas');
+
       return;
     }
 
-    const dayPart = calcDayPart();
+    horizonInstance = new HorizonScene(ctx, window.innerWidth, window.innerHeight);
 
-    if (!dayPart) {
-      return;
-    }
-
-    if (dayPart.currentStatus === DayPartStatus.Day) {
-          ctx.fillStyle = '#87ceeb';
-    } else {
-      ctx.fillStyle = '#0C090A';
-    }
-    
-    // Create gradient
-    // const grd = ctx.createLinearGradient(0, 0, 200, 0);
-    // grd.addColorStop(0, 'red');
-    // grd.addColorStop(1, 'white');
-    
-    ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
+    horizonInstance.init();
   });
 </script>
 
 <canvas class="canvas" bind:this={canvasRef}></canvas>
 
-<style>
+<!-- <style>
   /* .canvas {
     position: fixed;
     top: 0;
@@ -56,4 +35,4 @@
     height: 100vh;
     display: block;
   } */
-</style>
+</style> -->
