@@ -74,6 +74,13 @@ export default [
       'object-curly-spacing': ['error', 'always'],
       'no-multiple-empty-lines': ['error', { max: 1, maxEOF: 0, maxBOF: 0 }],
       'padded-blocks': ['error', 'never'],
+      '@typescript-eslint/no-unused-vars': [
+        'warn',
+        {
+          varsIgnorePattern: '^_|^DayPartStatus$', // игнорировать enum
+          argsIgnorePattern: '^_',
+        },
+      ],
     },
   },
   // Игнорируем ненужные папки
