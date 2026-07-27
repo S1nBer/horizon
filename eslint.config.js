@@ -2,6 +2,7 @@ import js from '@eslint/js';
 import svelte from 'eslint-plugin-svelte';
 import svelteParser from 'svelte-eslint-parser';
 import globals from 'globals';
+import tsParser from '@typescript-eslint/parser';
 
 export default [
   // Базовые правила для всего
