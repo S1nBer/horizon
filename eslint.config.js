@@ -29,24 +29,24 @@ export default [
     },
     rules: {
       // Стиль: отступы 2 пробела, одинарные кавычки
-      'indent': ['error', 2],
-      'quotes': ['error', 'single'],
-      'semi': ['error', 'always'],
+      indent: ['error', 2],
+      quotes: ['error', 'single'],
+      semi: ['error', 'always'],
       'comma-dangle': ['error', 'always-multiline'],
       // Убираем лишние пробелы
       'no-multi-spaces': 'error',
       'space-infix-ops': 'error',
       'object-curly-spacing': ['error', 'always'],
       // Убираем лишние пустые строки
-      'no-multiple-empty-lines': ['error', { 'max': 1, 'maxEOF': 0, 'maxBOF': 0 }],
+      'no-multiple-empty-lines': ['error', { max: 1, maxEOF: 0, maxBOF: 0 }],
       'padded-blocks': ['error', 'never'],
       // Предупреждения вместо ошибок для мелочей
-      'no-unused-vars': ['warn', { 'varsIgnorePattern': '^\\$\\$|^_', 'argsIgnorePattern': '^_' }],
+      'no-unused-vars': ['warn', { varsIgnorePattern: '^\\$\\$|^_', argsIgnorePattern: '^_' }],
       'no-console': 'warn',
       'space-before-blocks': ['error', 'always'],
-      'keyword-spacing': ['error', { 'before': true, 'after': true }],
+      'keyword-spacing': ['error', { before: true, after: true }],
       'block-spacing': ['error', 'always'],
-      'brace-style': ['error', '1tbs', { 'allowSingleLine': false }], // Запрещаем одно-строчные блоки
+      'brace-style': ['error', '1tbs', { allowSingleLine: false }], // Запрещаем одно-строчные блоки
     },
   },
   // Правила для JS/TS файлов
@@ -57,7 +57,7 @@ export default [
       parserOptions: {
         ecmaVersion: 2022,
         sourceType: 'module',
-        project: './tsconfig.json', // если нужен strict type checking
+        project: './tsconfig.eslint.json',
       },
       globals: {
         ...globals.browser,
@@ -65,14 +65,14 @@ export default [
       },
     },
     rules: {
-      'indent': ['error', 2],
-      'quotes': ['error', 'single'],
-      'semi': ['error', 'always'],
+      indent: ['error', 2],
+      quotes: ['error', 'single'],
+      semi: ['error', 'always'],
       'comma-dangle': ['error', 'always-multiline'],
       'no-multi-spaces': 'error',
       'space-infix-ops': 'error',
       'object-curly-spacing': ['error', 'always'],
-      'no-multiple-empty-lines': ['error', { 'max': 1, 'maxEOF': 0, 'maxBOF': 0 }],
+      'no-multiple-empty-lines': ['error', { max: 1, maxEOF: 0, maxBOF: 0 }],
       'padded-blocks': ['error', 'never'],
     },
   },
