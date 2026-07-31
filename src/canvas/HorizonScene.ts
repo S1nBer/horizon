@@ -31,20 +31,41 @@ export class HorizonScene {
       return;
     }
 
-    if (dayPart.currentStatus === DayPartStatus.Day) {
-      this.ctx.fillStyle = '#87ceeb';
-    } else if (dayPart.currentStatus === DayPartStatus.Night) {
-      this.ctx.fillStyle = '#0C090A';
-    } else {
-      // Create gradient
-      const gradient = this.ctx.createLinearGradient(0, 0, 0, this.height);
+    const gradient = this.ctx.createLinearGradient(0, 0, 0, this.height);
 
-      gradient.addColorStop(0, '#1a1a3e');
-      gradient.addColorStop(1, '#ff8c42');
-
-      this.ctx.fillStyle = gradient;
+    switch (dayPart.currentStatus) {
+      case DayPartStatus.Day:
+        gradient.addColorStop(0, '#4A90D9');
+        gradient.addColorStop(1, '#B0D4F1');
+        break;
+      case DayPartStatus.Night:
+        gradient.addColorStop(0, '#0A0809');
+        gradient.addColorStop(1, '#141012');
+        break;
+      case DayPartStatus.GoldHour:
+        gradient.addColorStop(0, '#6B8FBF');
+        gradient.addColorStop(0.5, '#D4A373');
+        gradient.addColorStop(1, '#F4A460');
+        break;
+      case DayPartStatus.CivilTwilight:
+        gradient.addColorStop(0, '#4A5F7A');
+        gradient.addColorStop(0.5, '#C06C84');
+        gradient.addColorStop(1, '#F0803A');
+        break;
+      case DayPartStatus.NavigationalTwilight:
+        gradient.addColorStop(0, '#1A2530');
+        gradient.addColorStop(1, '#3B4D61');
+        break;
+      case DayPartStatus.AstronomicalTwilight:
+        gradient.addColorStop(0, '#0C0E12');
+        gradient.addColorStop(1, '#1E2835');
+        break;
+      default:
+        console.error('Ошибка, Неккоректная часть дня');
+        break;
     }
 
+    this.ctx.fillStyle = gradient;
     this.ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
   }
 }

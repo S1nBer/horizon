@@ -1,6 +1,8 @@
 export enum DayPartStatus {
-    Night = 'NIGHT',
-    Morning = 'MORNING',
-    Day = 'DAY',
-    Evening = 'EVENING'
+  Day = 'DAY',
+  GoldHour = 'GOLD_HOUR',
+  CivilTwilight = 'CIVIL_TWITLIGHT',
+  NavigationalTwilight = 'NAVIGATION_TWITLIGHT',
+  AstronomicalTwilight = 'ASTRONOMICAL_TWITLIGHT',
+  Night = 'NIGHT',
 }
